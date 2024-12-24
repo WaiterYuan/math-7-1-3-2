@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>解一元一次方程式</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background-color: #f7f7f7;
+    }
+    .equation {
+      font-size: 24px;
+      margin: 20px 0;
+    }
+    .buttons {
+      margin: 20px 0;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    select {
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    .answer {
+      font-size: 20px;
+      margin-top: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>解一元一次方程式</h1>
+  <div>
+    <label for="difficulty">選擇難度：</label>
+    <select id="difficulty">
+      <option value="0">隨機</option>
+      <option value="1">難度 1：一個 x 項</option>
+      <option value="2">難度 2：兩個 x 項</option>
+      <option value="3">難度 3：括號題型</option>
+    </select>
+  </div>
+  <div class="equation" id="equation">按下隨機出題生成方程式</div>
+  <div class="buttons">
+    <button onclick="generateEquation()">隨機出題</button>
+    <button onclick="showAnswer()">公布答案</button>
+  </div>
+  <div class="answer" id="answer"></div>
+  <script src="script.js"></script>
+</body>
+</html>
