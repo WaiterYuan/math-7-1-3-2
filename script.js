@@ -34,17 +34,24 @@ function generateEquation() {
       break;
 
     case 3:
-      // 難度 3: 含括號，括號前必須有數字，且允許負數
-      let a3, b3, c3, d3, e3;
+      // 難度 3: 含括號，括號內的 x 可有係數，且括號內必有常數
+      let a3, b3, c3, d3, e3, f3, g3;
       do {
-        a3 = randomInt(-5, 5, true); // 確保括號前數字非零
-        b3 = randomInt(-5, 5, false);
-        c3 = randomInt(-5, 5, true); // 確保括號前數字非零
-        d3 = randomInt(-5, 5, false);
-        e3 = randomInt(-10, 10, false);
-        answer = (e3 - b3 * a3 + d3 * c3) / (a3 - c3);
-      } while (a3 === 0 || c3 === 0 || b3 === 0 || d3 === 0 || e3 === 0 || !Number.isInteger(answer) || answer <= -5 || answer >= 5 || answer === 0);
-      equation = `${formatCoefficient(a3)}(x ${formatConstant(b3)}) = ${formatCoefficient(c3)}(x ${formatConstant(d3)}) ${formatConstant(e3)}`;
+        a3 = randomInt(-5, 5, true);  // 括號外的係數 (左)
+        b3 = randomInt(-5, 5, true);  // 括號內的 x 的係數 (左)
+        c3 = randomInt(-5, 5, false); // 括號內的常數項 (左)
+        d3 = randomInt(-5, 5, true);  // 括號外的係數 (右)
+        e3 = randomInt(-5, 5, true);  // 括號內的 x 的係數 (右)
+        f3 = randomInt(-5, 5, false); // 括號內的常數項 (右)
+        g3 = randomInt(-10, 10, false); // 獨立常數項
+        answer = (g3 - a3 * c3 + d3 * f3) / (a3 * b3 - d3 * e3);
+      } while (
+        a3 === 0 || b3 === 0 || d3 === 0 || e3 === 0 || c3 === 0 || f3 === 0 || 
+        !Number.isInteger(answer) || answer <= -5 || answer >= 5 || answer === 0
+      );
+
+      // 組合題目
+      equation = `${formatCoefficient(a3)}(${formatCoefficient(b3)}x ${formatConstant(c3)}) = ${formatCoefficient(d3)}(${formatCoefficient(e3)}x ${formatConstant(f3)}) ${formatConstant(g3)}`;
       break;
 
     default:
